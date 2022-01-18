@@ -2,12 +2,17 @@
 //  Message.swift
 //  FirebaseChat
 //
-//  Created by Artemiy Zuzin on 08.01.2022.
+//  Created by Artemiy Zuzin on 16.01.2022.
 //
 
-import Foundation
+import UIKit
+import MessageKit
 
-struct Message {
-    let message: String
-    let autor: String
+struct Message: MessageType {
+    
+    var sender: SenderType
+    var messageId: String
+    var sentDate: Date
+    var kind: MessageKind
+    
 }

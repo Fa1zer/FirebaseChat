@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DA94391E7C3364EC06E25D36 /* Pods_FirebaseChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5350561860C65E72AFCD82A0 /* Pods_FirebaseChat.framework */; };
+		E355D4DC27948FB100D43051 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355D4DB27948FB100D43051 /* Sender.swift */; };
+		E355D4DE27948FF300D43051 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355D4DD27948FF300D43051 /* Message.swift */; };
 		E3EB34062789A58F00F8AA88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EB34052789A58F00F8AA88 /* AppDelegate.swift */; };
 		E3EB34082789A58F00F8AA88 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EB34072789A58F00F8AA88 /* SceneDelegate.swift */; };
 		E3EB34122789A59200F8AA88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3EB34112789A59200F8AA88 /* Assets.xcassets */; };
@@ -21,14 +23,14 @@
 		E3EB342E2789CBFC00F8AA88 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EB342D2789CBFC00F8AA88 /* ChatViewController.swift */; };
 		E3EB34302789CC0C00F8AA88 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EB342F2789CC0C00F8AA88 /* ChatModel.swift */; };
 		E3EB34332789D21A00F8AA88 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E3EB34322789D21A00F8AA88 /* KeychainAccess */; };
-		E3EB3436278A207800F8AA88 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EB3435278A207800F8AA88 /* Message.swift */; };
-		E3EB3438278A20DB00F8AA88 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EB3437278A20DB00F8AA88 /* MessageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5350561860C65E72AFCD82A0 /* Pods_FirebaseChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FFC4012521042A00DB0FF80 /* Pods-FirebaseChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseChat.release.xcconfig"; path = "Target Support Files/Pods-FirebaseChat/Pods-FirebaseChat.release.xcconfig"; sourceTree = "<group>"; };
 		7BDDE299E104A91748C9EAB7 /* Pods-FirebaseChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseChat.debug.xcconfig"; path = "Target Support Files/Pods-FirebaseChat/Pods-FirebaseChat.debug.xcconfig"; sourceTree = "<group>"; };
+		E355D4DB27948FB100D43051 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		E355D4DD27948FF300D43051 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E3EB34022789A58F00F8AA88 /* FirebaseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3EB34052789A58F00F8AA88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3EB34072789A58F00F8AA88 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,8 +45,6 @@
 		E3EB342A2789C12600F8AA88 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E3EB342D2789CBFC00F8AA88 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E3EB342F2789CC0C00F8AA88 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
-		E3EB3435278A207800F8AA88 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		E3EB3437278A20DB00F8AA88 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +75,15 @@
 				5350561860C65E72AFCD82A0 /* Pods_FirebaseChat.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E355D4DA27948FA000D43051 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				E355D4DB27948FB100D43051 /* Sender.swift */,
+				E355D4DD27948FF300D43051 /* Message.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		E3EB33F92789A58E00F8AA88 = {
@@ -151,18 +160,9 @@
 			children = (
 				E3EB342D2789CBFC00F8AA88 /* ChatViewController.swift */,
 				E3EB342F2789CC0C00F8AA88 /* ChatModel.swift */,
-				E3EB3434278A206400F8AA88 /* Message */,
+				E355D4DA27948FA000D43051 /* Message */,
 			);
 			path = ChatModule;
-			sourceTree = "<group>";
-		};
-		E3EB3434278A206400F8AA88 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				E3EB3435278A207800F8AA88 /* Message.swift */,
-				E3EB3437278A20DB00F8AA88 /* MessageTableViewCell.swift */,
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,11 +290,11 @@
 				E3EB34062789A58F00F8AA88 /* AppDelegate.swift in Sources */,
 				E3EB342E2789CBFC00F8AA88 /* ChatViewController.swift in Sources */,
 				E3EB34232789AB7200F8AA88 /* Coordinatable.swift in Sources */,
-				E3EB3438278A20DB00F8AA88 /* MessageTableViewCell.swift in Sources */,
+				E355D4DC27948FB100D43051 /* Sender.swift in Sources */,
 				E3EB34212789AB4400F8AA88 /* NavigationController.swift in Sources */,
+				E355D4DE27948FF300D43051 /* Message.swift in Sources */,
 				E3EB34282789AC6B00F8AA88 /* LogInModel.swift in Sources */,
 				E3EB34262789AC2E00F8AA88 /* LogInViewController.swift in Sources */,
-				E3EB3436278A207800F8AA88 /* Message.swift in Sources */,
 				E3EB34082789A58F00F8AA88 /* SceneDelegate.swift in Sources */,
 				E3EB34302789CC0C00F8AA88 /* ChatModel.swift in Sources */,
 			);

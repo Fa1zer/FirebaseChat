@@ -12,5 +12,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'IQKeyboardManagerSwift', '6.5.0'
+pod 'MessageKit'
+pod 'MessageInputBar'
 
 end
