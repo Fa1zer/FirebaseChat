@@ -9,31 +9,62 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 import MessageKit
+import UIKit
 
 final class ChatModel {
     
     init() {
-        database.observeSingleEvent(of: .value) { snapshot in
+        
+        database.child("messages").observe(.value) { [ weak self ] snapshot in
             
             guard let value = snapshot.value as? [[String : String]] else { return }
             
-            value.forEach { [ weak self ] value in
-                self?.messages.append(Message(sender: Sender(
-                    senderId: "\(Int.random(in: 0...99999999))", displayName: value["email"] ?? "none"),
-                    messageId: "\(Int.random(in: 0...99999999))", sentDate: Date(),
-                    kind: .text(value["text"] ?? "Не удалось загрузить сообщение."))
-                )
-            }
+            self?.dataMessages = value
+            
         }
     }
     
-    private(set) var messages = [Message]()
+    var callBack: (() -> Void)?
+    
+    var email: String? {
+        
+        DispatchQueue.main.async { [ weak self ] in
+            self?.callBack?()
+        }
+        
+        return Auth.auth().currentUser?.email
+        
+    }
+        
+    var messages = [Message]() {
+        didSet {
+            print(messages.count)
+            
+            callBack?()
+        }
+    }
+    
+    private var dataMessages = [[String : String]]() {
+        didSet {
+            
+            messages = []
+            
+            dataMessages.forEach { value in
+                
+                messages.append(Message(sender: Sender(
+                    senderId: "\(value["email"] ?? "none")", displayName: value["email"] ?? "none"),
+                    messageId: "\(Int.random(in: 0...99999999))", sentDate: Date(),
+                    kind: .text(value["text"] ?? "Не удалось загрузить сообщение.")))
+            }
+        }
+    }
     
     private let database = Database.database().reference()
     
     func singOut(didComplete: @escaping () -> Void, didNotComplite: @escaping () -> Void) {
         
         do {
+            
             try FirebaseAuth.Auth.auth().signOut()
             
             didComplete()
@@ -53,24 +84,19 @@ final class ChatModel {
     }
     
     func newMessage(text: String) {
-        
-        database.getData { [ weak self ] error, snapshot in
-            
-            if let error = error {
-                print(error)
                 
-                return
-            }
-            
-            guard var value = snapshot.value as? [[String : String]] else { return }
-            
-            let message = ["email" : Auth.auth().currentUser?.email ?? "none",
-                            "text" : text]
-            
-            value.append(message)
-            
-            self?.database.child("message").setValue(message)
-        }
+        guard let email = Auth.auth().currentUser?.email else { return }
+        
+        var value = dataMessages as [[String : NSObject]]
+        
+        let message = [
+            "email" : email as NSObject,
+            "text" : text as NSObject
+        ]
+        
+        value.append(message)
+        
+        database.child("messages").setValue(value)
     }
     
 }

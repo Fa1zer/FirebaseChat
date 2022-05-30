@@ -211,6 +211,9 @@ final class LogInViewController: UIViewController, Coordinatable {
         
         keychain["email"] = emailTextField.text!
         keychain["password"] = passwordTextField.text!
+        
+        passwordTextField.text = ""
+        emailTextField.text = ""
     }
     
     private func didNotCompleteSignIn() {
